@@ -6,6 +6,7 @@
 #include "hardware/pwm.h" //biblioteca para controlar o hardware de PWM
 #include "lib/ssd1306.h"
 #include "lib/font.h"
+
 #define I2C_PORT i2c1
 #define I2C_SDA 14 
 #define I2C_SCL 15 
@@ -13,7 +14,6 @@
 #define JOYSTICK_X_PIN 26  // GPIO para eixo X
 #define JOYSTICK_Y_PIN 27  // GPIO para eixo Y
 #define JOYSTICK_PB 22 // GPIO para botão do Joystick
-
 
 static volatile bool retanguloMenor_ativo = false;
 bool cor = true; // Variável para alternar a cor do pixel
@@ -121,10 +121,10 @@ int main(){
         
         // Atualiza o conteúdo do display com animações
         ssd1306_fill(&ssd, !cor); // Limpa o display
-        ssd1306_rect(&ssd, 3, 3, 122, 60, cor, !cor); // Desenha um retângulo
+        ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
 
         if(retanguloMenor_ativo){
-            ssd1306_rect(&ssd, 4, 4, 120, 58, cor, !cor); // Desenha um retângulo menor duplicando a borda
+            ssd1306_rect(&ssd, 5, 5, 118, 54, cor, !cor);
         }
         // Calcula a posição do quadrado no display
         uint8_t pos_X = (adc_value_x *(128-8))/ 4095;
